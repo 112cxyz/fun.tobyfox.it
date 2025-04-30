@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DAMN!!!</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-image: url('/BACKMN.jpg');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      height: 100%;
+    }
+    #damn {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      background-image: url('/damn.png');
+    }
+  </style>
+</head>
+<body>
+  <div id="damn"> </div>
+
+  <script>
+    const damn = document.getElementById('damn');
+    const speed = 2;
+    let x = 100, y = 100;
+    let dx = speed, dy = speed;
+
+
+
+    function move() {
+      const bounds = damn.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      if (x + bounds.width >= vw || x <= 0) {
+        dx = -dx;
+      }
+      if (y + bounds.height >= vh || y <= 0) {
+        dy = -dy;
+      }
+
+      x += dx;
+      y += dy;
+
+      damn.style.left = `${x}px`;
+      damn.style.top = `${y}px`;
+
+      requestAnimationFrame(move);
+    }
+
+    move();
+  </script>
+</body>
+</html>
